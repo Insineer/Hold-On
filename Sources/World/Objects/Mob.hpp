@@ -6,15 +6,17 @@ namespace sf {
     class CircleShape;
 }
 
-class Hero : public Object {
+class Mob : public Object {
+private:
     float radius;
+    float velocity;
+
+    std::pair<bool, vec2f> GetShift(const vec2f& diff);
 public:
-    Hero();
+    Mob();
 
     virtual void Draw(sf::RenderTarget *target, vec2f targetCoord) const final;
     virtual void Update() final;
 
     operator sf::CircleShape();
 };
-
-

@@ -11,6 +11,7 @@ namespace sf {
     class RectangleShape;
 }
 class Hero;
+class Mob;
 
 class Map {
 private:
@@ -23,6 +24,6 @@ public:
 
     void Update();
     void Draw(sf::RenderTarget *target);
+
+    Hero *GetHero() const;
 };
-
-

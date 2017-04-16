@@ -5,13 +5,14 @@
 #include "Game.hpp"
 #include "World/Map.hpp"
 
-#include <iostream>
-
 Window::Window() {
     renderWindow.reset(new sf::RenderWindow(sf::VideoMode(800, 600), "Hold On"));
     textures["armysheet"] = uptr<sf::Texture>(new sf::Texture());
     if (!textures["armysheet"]->loadFromFile("Textures/armysheet1.png"))
-        std::cout << "Error: texture wasn't loaded" << std::endl;
+        std::cout << "Error: texture armysheet1 wasn't loaded" << std::endl;
+    textures["monstr1"] = uptr<sf::Texture>(new sf::Texture());
+    if (!textures["monstr1"]->loadFromFile("Textures/monstr1.png"))
+        std::cout << "Error: texture monstr1 wasn't loaded" << std::endl;
 }
 
 void Window::Update() {

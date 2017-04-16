@@ -46,3 +46,9 @@ vec2f::operator sf::Vector2f() const {
 vec2f::operator sf::Vector2u() const {
     return sf::Vector2u((unsigned)x, (unsigned)y);
 }
+
+std::ostream& operator<<(std::ostream& os, const vec2f& vec)
+{
+    os << "(" << vec.x << ", " << vec.y << ')';
+    return os;
+}

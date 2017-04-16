@@ -2,6 +2,8 @@
 
 #include <SFML/System/Vector2.hpp>
 
+#include "iostream"
+
 struct vec2f {
     float x;
     float y;
@@ -21,6 +23,6 @@ struct vec2f {
 
     operator sf::Vector2f() const;
     operator sf::Vector2u() const;
+
+    friend std::ostream& operator<<(std::ostream& os, const vec2f& vec);
 };
-
-

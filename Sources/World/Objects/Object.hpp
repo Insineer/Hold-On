@@ -10,6 +10,7 @@ namespace sf {
 
 class Object {
 protected:
+    float angle; //Has to be between -180 and 180
     vec2f position;
     uptr<sf::Sprite> sprite;
 
@@ -22,5 +23,3 @@ public:
     vec2f GetPosition() const;
     ~Object();
 };
-
-

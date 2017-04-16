@@ -11,7 +11,7 @@ set(Hold_On_VERSION_MINOR 0)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(SOURCE_FILES Sources/main.cpp Sources/Graphics/Window.cpp Sources/Graphics/Window.hpp Sources/Useful.hpp Sources/World/Map.cpp Sources/World/Map.hpp Sources/Game.cpp Sources/Game.hpp Sources/Useful/Vec2f.cpp Sources/Useful/Vec2f.hpp Sources/World/Objects/Hero.cpp Sources/World/Objects/Hero.hpp Sources/World/Objects/Object.cpp Sources/World/Objects/Object.hpp Sources/Player.cpp Sources/Player.hpp)
+set(SOURCE_FILES Sources/main.cpp Sources/Graphics/Window.cpp Sources/Graphics/Window.hpp Sources/Useful.hpp Sources/World/Map.cpp Sources/World/Map.hpp Sources/Game.cpp Sources/Game.hpp Sources/Useful/Vec2f.cpp Sources/Useful/Vec2f.hpp Sources/World/Objects/Hero.cpp Sources/World/Objects/Hero.hpp Sources/World/Objects/Object.cpp Sources/World/Objects/Object.hpp Sources/Player.cpp Sources/Player.hpp Sources/World/Objects/Mob.cpp Sources/World/Objects/Mob.hpp Sources/Geometry.cpp)
 set(EXECUTABLE_NAME "Hold_On")
 add_executable(${EXECUTABLE_NAME} ${SOURCE_FILES})
 
