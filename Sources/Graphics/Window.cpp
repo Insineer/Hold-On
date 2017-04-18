@@ -16,15 +16,17 @@ Window::Window() {
 }
 
 void Window::Update() {
-    sf::Event event;
-    while (renderWindow->pollEvent(event)) {
-        if (event.type == sf::Event::Closed)
-            renderWindow->close();
-    }
-
     renderWindow->clear(sf::Color::Black);
     Game::Get()->GetMap()->Draw(renderWindow.get());
     renderWindow->display();
+}
+
+bool Window::PollEvent(sf::Event &event) {
+    return renderWindow->pollEvent(event);
+}
+
+void Window::Close() {
+    renderWindow->close();
 }
 
 bool Window::IsOpen() const {

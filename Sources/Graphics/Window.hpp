@@ -8,6 +8,7 @@
 namespace sf {
     class RenderWindow;
     class Texture;
+    class Event;
 }
 
 class Window {
@@ -18,6 +19,9 @@ private:
 public:
     Window();
     void Update();
+
+    bool PollEvent(sf::Event &event);
+    void Close();
 
     bool IsOpen() const;
     sf::Texture *GetTexture(const sf::String &key) const;

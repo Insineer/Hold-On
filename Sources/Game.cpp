@@ -5,6 +5,7 @@
 #include "Player.hpp"
 #include "Graphics/Window.hpp"
 #include "World/Map.hpp"
+#include "States/GameProcessState.hpp"
 
 #include <iostream>
 
@@ -17,10 +18,17 @@ Game::Game() {
     player.reset(new Player());
     window.reset(new Window());
     map.reset(new Map());
+    state.reset(new GameProcessState());
 
     while(window->IsOpen()) {
-        map->Update();
-        window->Update();
+        sf::Event event;
+        while (window->PollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->Close();
+            state->HandleEvent(event);
+        }
+        state->Update();
+        state->Draw();
     }
 }
 

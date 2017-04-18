@@ -5,6 +5,7 @@
 class Player;
 class Window;
 class Map;
+class State;
 
 class Game {
 private:
@@ -12,6 +13,7 @@ private:
     uptr<Player> player;
     uptr<Window> window;
     uptr<Map> map;
+    uptr<State> state;
 
 public:
     Game();
