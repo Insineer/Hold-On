@@ -1,47 +1,43 @@
-#include "Useful.hpp"
-
-#include <SFML/Graphics.hpp>
+#include "Geometry.hpp"
 
 #include "Useful/Vec2f.hpp"
+#include "Useful/Shape/Circle.hpp"
+#include "Useful/Shape/Rectangle.hpp"
 
-int GetSign(float t) { return -(std::signbit(t) * 2 - 1); }
-
-inline float Dist(const vec2f &vec) { return std::sqrt(vec.x * vec.x + vec.y * vec.y); }
-
-inline float HalfDiag(const sf::RectangleShape &Rect) {
-    return std::sqrt(Rect.getSize().x * Rect.getSize().x + Rect.getSize().y * Rect.getSize().y) / 2;
+inline float HalfDiag(const Rectangle &Rect) {
+    return std::sqrt(Rect.GetSize().x * Rect.GetSize().x + Rect.GetSize().y * Rect.GetSize().y) / 2;
 }
 
 inline vec2f Rotation(float x, float y, float angle) {
     return vec2f(x * std::cos(angle) + y * std::sin(angle), y * std::cos(angle) - x * std::sin(angle));
 }
 
-inline std::pair<vec2f, vec2f> GetSegm1(const sf::RectangleShape &Rect) {
-    return std::make_pair(Rotation(Rect.getPosition().x - Rect.getSize().x / 2,
-                                   Rect.getPosition().y - Rect.getSize().y / 2, Rect.getRotation()),
-                          Rotation(Rect.getPosition().x + Rect.getSize().x / 2,
-                                   Rect.getPosition().y - Rect.getSize().y / 2, Rect.getRotation()));
+inline std::pair<vec2f, vec2f> GetSegm1(const Rectangle &Rect) {
+    return std::make_pair(Rotation(Rect.GetPosition().x - Rect.GetSize().x / 2,
+                                   Rect.GetPosition().y - Rect.GetSize().y / 2, Rect.GetRotation()),
+                          Rotation(Rect.GetPosition().x + Rect.GetSize().x / 2,
+                                   Rect.GetPosition().y - Rect.GetSize().y / 2, Rect.GetRotation()));
 };
 
-inline std::pair<vec2f, vec2f> GetSegm2(const sf::RectangleShape &Rect) {
-    return std::make_pair(Rotation(Rect.getPosition().x + Rect.getSize().x / 2,
-                                   Rect.getPosition().y - Rect.getSize().y / 2, Rect.getRotation()),
-                          Rotation(Rect.getPosition().x + Rect.getSize().x / 2,
-                                   Rect.getPosition().y + Rect.getSize().y / 2, Rect.getRotation()));
+inline std::pair<vec2f, vec2f> GetSegm2(const Rectangle &Rect) {
+    return std::make_pair(Rotation(Rect.GetPosition().x + Rect.GetSize().x / 2,
+                                   Rect.GetPosition().y - Rect.GetSize().y / 2, Rect.GetRotation()),
+                          Rotation(Rect.GetPosition().x + Rect.GetSize().x / 2,
+                                   Rect.GetPosition().y + Rect.GetSize().y / 2, Rect.GetRotation()));
 };
 
-inline std::pair<vec2f, vec2f> GetSegm3(const sf::RectangleShape &Rect) {
-    return std::make_pair(Rotation(Rect.getPosition().x - Rect.getSize().x / 2,
-                                   Rect.getPosition().y + Rect.getSize().y / 2, Rect.getRotation()),
-                          Rotation(Rect.getPosition().x + Rect.getSize().x / 2,
-                                   Rect.getPosition().y + Rect.getSize().y / 2, Rect.getRotation()));
+inline std::pair<vec2f, vec2f> GetSegm3(const Rectangle &Rect) {
+    return std::make_pair(Rotation(Rect.GetPosition().x - Rect.GetSize().x / 2,
+                                   Rect.GetPosition().y + Rect.GetSize().y / 2, Rect.GetRotation()),
+                          Rotation(Rect.GetPosition().x + Rect.GetSize().x / 2,
+                                   Rect.GetPosition().y + Rect.GetSize().y / 2, Rect.GetRotation()));
 };
 
-inline std::pair<vec2f, vec2f> GetSegm4(const sf::RectangleShape &Rect) {
-    return std::make_pair(Rotation(Rect.getPosition().x - Rect.getSize().x / 2,
-                                   Rect.getPosition().y - Rect.getSize().y / 2, Rect.getRotation()),
-                          Rotation(Rect.getPosition().x - Rect.getSize().x / 2,
-                                   Rect.getPosition().y + Rect.getSize().y / 2, Rect.getRotation()));
+inline std::pair<vec2f, vec2f> GetSegm4(const Rectangle &Rect) {
+    return std::make_pair(Rotation(Rect.GetPosition().x - Rect.GetSize().x / 2,
+                                   Rect.GetPosition().y - Rect.GetSize().y / 2, Rect.GetRotation()),
+                          Rotation(Rect.GetPosition().x - Rect.GetSize().x / 2,
+                                   Rect.GetPosition().y + Rect.GetSize().y / 2, Rect.GetRotation()));
 };
 
 inline float TriangleArea(vec2f a, vec2f b, vec2f c) { return (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x); }
@@ -52,35 +48,35 @@ inline bool Intersect(float a, float b, float c, float d) {
     return std::max(a, c) <= std::min(b, d);
 }
 
-bool Intersect(vec2f a, vec2f b, vec2f c, vec2f d) {
+bool Intersect(const vec2f &a, const vec2f &b, const vec2f &c, const vec2f &d) {
     return Intersect(a.x, b.x, c.x, d.x)
            && Intersect(a.y, b.y, c.y, d.y)
-           && GetSign(TriangleArea(a, b, c)) * GetSign(TriangleArea(a, b, d)) <= 0
-           && GetSign(TriangleArea(c, d, a)) * GetSign(TriangleArea(c, d, b)) <= 0;
+           && Sgn(TriangleArea(a, b, c)) * Sgn(TriangleArea(a, b, d)) <= 0
+           && Sgn(TriangleArea(c, d, a)) * Sgn(TriangleArea(c, d, b)) <= 0;
 }
 
-bool Intersect(vec2f &point1, vec2f &point2, const sf::CircleShape &Circle) {
-    vec2f c = Circle.getPosition();
+bool Intersect(const vec2f &point1, const vec2f &point2, const Circle &Circle) {
+    vec2f c = Circle.GetPosition();
     float diffX = point2.x - point1.x,
           diffY = point2.y - point1.y;
     float x = (diffX * diffY * (c.y - point1.y) + point1.x * diffY * diffY + c.x * diffX * diffX)
             / (diffY * diffY + diffX * diffX),
           y = diffY * (x - point1.x) / diffX + point1.y;
     vec2f diff = vec2f(x, y) - c;
-    if (Circle.getRadius() < Dist(diff))
+    if (Circle.GetRadius() < Dist(diff))
         return false;
     return true;
 }
 
-bool Intersect(const sf::CircleShape &Circle1, const sf::CircleShape &Circle2) {
-    auto diff = vec2f(Circle1.getPosition()) - vec2f(Circle2.getPosition());
-    if (Circle1.getRadius() + Circle2.getRadius() < Dist(diff))
+bool Intersect(const Circle &Circle1, const Circle &Circle2) {
+    auto diff = vec2f(Circle1.GetPosition()) - vec2f(Circle2.GetPosition());
+    if (Circle1.GetRadius() + Circle2.GetRadius() < Dist(diff))
         return false;
     return true;
 }
 
-bool Intersect(const sf::RectangleShape &Rect1, const sf::RectangleShape &Rect2) {
-    auto diff = vec2f(Rect1.getPosition()) - vec2f(Rect2.getPosition());
+bool Intersect(const Rectangle &Rect1, const Rectangle &Rect2) {
+    auto diff = vec2f(Rect1.GetPosition()) - vec2f(Rect2.GetPosition());
 
     if (HalfDiag(Rect1) + HalfDiag(Rect2) < Dist(diff))
         return false;
@@ -113,7 +109,7 @@ bool Intersect(const sf::RectangleShape &Rect1, const sf::RectangleShape &Rect2)
     return false;
 }
 
-bool Intersect(const sf::CircleShape &Circle, const sf::RectangleShape &Rect) {
+bool Intersect(const Circle &Circle, const Rectangle &Rect) {
     std::pair<vec2f, vec2f> Segm1 = GetSegm1(Rect),
                             Segm2 = GetSegm2(Rect),
                             Segm3 = GetSegm3(Rect),
@@ -126,4 +122,4 @@ bool Intersect(const sf::CircleShape &Circle, const sf::RectangleShape &Rect) {
     return false;
 }
 
-bool Intersect(const sf::RectangleShape &Rect, const sf::CircleShape &Circle) { return Intersect(Circle, Rect); }
+bool Intersect(const Rectangle &Rect, const Circle &Circle) { return Intersect(Circle, Rect); }

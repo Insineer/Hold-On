@@ -2,6 +2,7 @@
 
 #include <SFML/System/Vector2.hpp>
 
+#include "cmath"
 #include "iostream"
 
 struct vec2f {
@@ -10,8 +11,9 @@ struct vec2f {
 
     vec2f();
     vec2f(float x, float y);
-    vec2f(sf::Vector2f vect);
-    vec2f(sf::Vector2u vect);
+    vec2f(const vec2f& vect);
+    vec2f(const sf::Vector2f &vect);
+    vec2f(const sf::Vector2u &vect);
     vec2f operator+(const vec2f &other);
     vec2f operator-(const vec2f &other);
     vec2f operator+=(vec2f &other);
@@ -26,3 +28,5 @@ struct vec2f {
 
     friend std::ostream& operator<<(std::ostream& os, const vec2f& vec);
 };
+
+float Dist(const vec2f &vec);

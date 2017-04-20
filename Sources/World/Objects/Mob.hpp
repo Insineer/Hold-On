@@ -17,6 +17,4 @@ public:
 
     virtual void Draw(sf::RenderTarget *target, vec2f targetCoord) const final;
     virtual void Update() final;
-
-    operator sf::CircleShape();
 };

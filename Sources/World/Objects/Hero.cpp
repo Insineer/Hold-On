@@ -4,6 +4,7 @@
 
 #include "Game.hpp"
 #include "Graphics/Window.hpp"
+#include "Useful/Shape/Circle.hpp"
 
 Hero::Hero() {
     sprite.reset(new sf::Sprite);
@@ -11,6 +12,8 @@ Hero::Hero() {
     sprite->setTextureRect(sf::IntRect(385, 25, 80, 54));
     angle = 0;
     radius = 27;
+
+    shape.reset(new Circle(radius));
 };
 
 void Hero::Draw(sf::RenderTarget *target, vec2f targetCoord) const {
@@ -21,11 +24,6 @@ void Hero::Draw(sf::RenderTarget *target, vec2f targetCoord) const {
 }
 
 void Hero::Update() {
-
-}
-
-Hero::operator sf::CircleShape() {
-    auto Circle = sf::CircleShape(radius);
-    Circle.setPosition(position);
-    return Circle;
+    shape->SetPosition(position);
+    shape->SetRotation(angle);
 }

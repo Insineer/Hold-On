@@ -8,11 +8,14 @@ namespace sf {
     class Sprite;
 }
 
+class Shape;
+
 class Object {
 protected:
     float angle; //Has to be between -180 and 180
     vec2f position;
     uptr<sf::Sprite> sprite;
+    uptr<Shape> shape;
 
 public:
     virtual void Update() = 0;
@@ -21,5 +24,7 @@ public:
     void SetPosition(vec2f position);
     void SetPosition(float x, float y);
     vec2f GetPosition() const;
+    Shape *GetShape() const;
+
     ~Object();
 };
