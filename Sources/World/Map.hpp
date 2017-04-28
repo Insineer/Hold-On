@@ -3,7 +3,7 @@
 #include <list>
 #include <SFML/Graphics/PrimitiveType.hpp>
 
-#include "Useful/Vec2f.hpp"
+#include "Useful/Geometry/Vec2f.hpp"
 #include "World/Objects/Object.hpp"
 
 namespace sf {
@@ -15,8 +15,8 @@ class Mob;
 
 class Map {
 private:
-    vec2f size;
-    std::list<uptr<Object>> objects;
+    uf::vec2f size;
+    std::list<uf::uptr<Object>> objects;
     Hero *hero;
 
 public:

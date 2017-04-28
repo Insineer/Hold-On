@@ -1,12 +1,19 @@
 #include "Vec2f.hpp"
 
 #include <utility>
+#include <SFML/System/Vector2.hpp>
+
+using namespace uf;
 
 vec2f::vec2f() : x(0), y(0) {}
 vec2f::vec2f(float x, float y) : x(x), y(y) {}
 vec2f::vec2f(const vec2f &vect) : x(vect.x), y(vect.y) { }
 vec2f::vec2f(const sf::Vector2f &vect) : x(vect.x), y(vect.y) {}
 vec2f::vec2f(const sf::Vector2u &vect) : x(vect.x), y(vect.y) {}
+
+float vec2f::length() const {
+    return ::length(*this);
+}
 
 vec2f vec2f::operator+(const vec2f &other) {
     return vec2f(x + other.x, y + other.y);
@@ -54,4 +61,4 @@ std::ostream& operator<<(std::ostream& os, const vec2f& vec)
     return os;
 }
 
-float Dist(const vec2f &vec) { return std::sqrt(vec.x * vec.x + vec.y * vec.y); }
+float uf::length(const vec2f &vec) { return std::sqrt(vec.x * vec.x + vec.y * vec.y); }

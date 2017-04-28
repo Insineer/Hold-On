@@ -12,36 +12,36 @@ set(Hold_On_VERSION_MINOR 0)
 set(CMAKE_CXX_STANDARD 14)
 
 set(SOURCE_FILES
-Sources/main.cpp
-Sources/Graphics/Window.cpp
-Sources/Graphics/Window.hpp
-Sources/Useful.hpp
-Sources/World/Map.cpp
-Sources/World/Map.hpp
-Sources/Game.cpp
-Sources/Game.hpp
-Sources/Useful/Vec2f.cpp
-Sources/Useful/Vec2f.hpp
-Sources/World/Objects/Hero.cpp
-Sources/World/Objects/Hero.hpp
-Sources/World/Objects/Object.cpp
-Sources/World/Objects/Object.hpp
-Sources/Player.cpp
-Sources/Player.hpp
-Sources/States/State.cpp
-Sources/States/State.hpp
-Sources/States/GameProcessState.cpp
-Sources/States/GameProcessState.hpp
-Sources/World/Objects/Mob.cpp
-Sources/World/Objects/Mob.hpp
-Sources/Geometry.cpp
-Sources/Useful/Shape/Shape.hpp
-Sources/Useful/Shape/Circle.cpp
-Sources/Useful/Shape/Circle.hpp
-Sources/Useful/Shape/Rectangle.cpp
-Sources/Useful/Shape/Rectangle.hpp
-Sources/Geometry.hpp
-Sources/Useful.cpp)
+                Sources/main.cpp
+                Sources/Graphics/Window.cpp
+                Sources/Graphics/Window.hpp
+        Sources/Useful/Memory.hpp
+                Sources/World/Map.cpp
+                Sources/World/Map.hpp
+                Sources/Game.cpp
+                Sources/Game.hpp
+        Sources/Useful/Geometry/Vec2f.cpp
+        Sources/Useful/Geometry/Vec2f.hpp
+                Sources/World/Objects/Hero.cpp
+                Sources/World/Objects/Hero.hpp
+                Sources/World/Objects/Object.cpp
+                Sources/World/Objects/Object.hpp
+                Sources/Player.cpp
+                Sources/Player.hpp
+                Sources/States/State.cpp
+                Sources/States/State.hpp
+                Sources/States/GameProcessState.cpp
+                Sources/States/GameProcessState.hpp
+                Sources/World/Objects/Mob.cpp
+                Sources/World/Objects/Mob.hpp
+        Sources/Useful/Geometry/Geometry.cpp
+        Sources/Useful/Geometry/Shape/Shape.hpp
+        Sources/Useful/Geometry/Shape/Circle.cpp
+        Sources/Useful/Geometry/Shape/Circle.hpp
+        Sources/Useful/Geometry/Shape/Rectangle.cpp
+        Sources/Useful/Geometry/Shape/Rectangle.hpp
+        Sources/Useful/Geometry/Geometry.hpp
+        Sources/Useful/Math.cpp Sources/Useful/Math.hpp Sources/Useful/Geometry/Shape/Shape.cpp)
 
 set(EXECUTABLE_NAME "Hold_On")
 add_executable(${EXECUTABLE_NAME} ${SOURCE_FILES})

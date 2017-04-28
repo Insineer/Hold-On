@@ -1,23 +1,23 @@
 #include "Object.hpp"
 
-#include "Useful/Shape/Shape.hpp"
-
 #include <SFML/Graphics.hpp>
+
+#include "Useful/Geometry/Shape/Shape.hpp"
 
 Shape *Object::GetShape() const {
     return shape.get();
 }
 
-vec2f Object::GetPosition() const {
-    return position;
+uf::vec2f Object::GetPosition() const {
+    return shape->GetPosition();
 }
 
-void Object::SetPosition(vec2f position) {
-    this->position = position;
+void Object::SetPosition(uf::vec2f position) {
+    shape->SetPosition(position);
 }
 
 void Object::SetPosition(float x, float y) {
-    this->position = vec2f(x, y);
+    shape->SetPosition(x, y);
 }
 
-Object::~Object() {}
+Object::~Object() { }

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Useful.hpp"
+#include "Useful/Memory.hpp"
 
 class Player;
 class Window;
@@ -10,10 +10,10 @@ class State;
 class Game {
 private:
     static Game *instance;
-    uptr<Player> player;
-    uptr<Window> window;
-    uptr<Map> map;
-    uptr<State> state;
+    uf::uptr<Player> player;
+    uf::uptr<Window> window;
+    uf::uptr<Map> map;
+    uf::uptr<State> state;
 
 public:
     Game();

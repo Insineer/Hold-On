@@ -8,15 +8,15 @@
 #include "World/Objects/Mob.hpp"
 
 Map::Map() {
-    size = vec2f(1000, 1000);
+    size = uf::vec2f(1000, 1000);
     hero = new Hero();
     hero->SetPosition(630, 620);
     Game::Get()->GetPlayer()->SetHero(hero);
-    objects.push_back(uptr<Object>(hero));
+    objects.push_back(uf::uptr<Object>(hero));
 
     Mob *mob = new Mob;
     mob->SetPosition(0, 0);
-    objects.push_back(uptr<Object>(mob));
+    objects.push_back(uf::uptr<Object>(mob));
 }
 
 void Map::Update() {
@@ -52,7 +52,7 @@ void Map::Draw(sf::RenderTarget *target) {
             obj->GetPosition().x <  hero->GetPosition().x + target->getSize().x &&
             obj->GetPosition().y >= hero->GetPosition().y - target->getSize().y &&
             obj->GetPosition().y <  hero->GetPosition().y + target->getSize().y)
-            obj->Draw(target, obj->GetPosition() - (hero->GetPosition() - vec2f(target->getSize()) / 2));
+            obj->Draw(target, obj->GetPosition() - (hero->GetPosition() - uf::vec2f(target->getSize()) / 2));
 }
 
 Hero *Map::GetHero() const {

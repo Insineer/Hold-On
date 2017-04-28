@@ -3,7 +3,7 @@
 #include <map>
 #include <SFML/System/String.hpp>
 
-#include "Useful.hpp"
+#include "Useful/Memory.hpp"
 
 namespace sf {
     class RenderWindow;
@@ -13,8 +13,8 @@ namespace sf {
 
 class Window {
 private:
-    uptr<sf::RenderWindow> renderWindow;
-    std::map<sf::String, uptr<sf::Texture>> textures;
+    uf::uptr<sf::RenderWindow> renderWindow;
+    std::map<sf::String, uf::uptr<sf::Texture>> textures;
 
 public:
     Window();
