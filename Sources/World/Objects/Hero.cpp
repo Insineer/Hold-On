@@ -9,18 +9,15 @@
 Hero::Hero() {
     shape.reset(new uf::Circle(27));
     shapeCircle = dynamic_cast<uf::Circle *>(shape.get());
+
+    speed = 50;
+
     sprite.reset(new sf::Sprite);
     sprite->setTexture(*Game::Get()->GetWindow()->GetTexture("armysheet"));
     sprite->setTextureRect(sf::IntRect(385, 25, 80, 54));
 };
 
-void Hero::Draw(sf::RenderTarget *target, uf::vec2f targetCoord) const {
-    sprite->setPosition(targetCoord - uf::vec2f(sprite->getTextureRect().width / 2, sprite->getTextureRect().height / 2));
-    //sprite->setPosition(targetCoord);
-    sprite->setRotation(shape->GetRotation());
-    target->draw(*sprite);
-}
-
-void Hero::Update() {
-
+void Hero::Update(sf::Time timeElapsed) {
+    moveDirection = uf::vec2f(0, 1);
+    Mob::Update(timeElapsed);
 }

@@ -21,13 +21,14 @@ Game::Game() {
     state.reset(new GameProcessState());
 
     while(window->IsOpen()) {
+        sf::Time timeElapsed = clock.restart();
         sf::Event event;
         while (window->PollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window->Close();
             state->HandleEvent(event);
         }
-        state->Update();
+        state->Update(timeElapsed);
         state->Draw();
     }
 }

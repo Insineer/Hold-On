@@ -12,8 +12,8 @@ void GameProcessState::HandleEvent(sf::Event event) {
 
 }
 
-void GameProcessState::Update() {
-    game->GetMap()->Update();
+void GameProcessState::Update(sf::Time timeElapsed) {
+    game->GetMap()->Update(timeElapsed);
 }
 
 void GameProcessState::Draw() {

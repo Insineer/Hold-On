@@ -23,6 +23,7 @@ namespace uf {
         vec2f(const sf::Vector2u &vect);
 
         float length() const;
+        vec2f normalize() const;
 
         vec2f operator+(const vec2f &other);
         vec2f operator-(const vec2f &other);
@@ -40,4 +41,5 @@ namespace uf {
     };
 
     float length(const vec2f &vec);
+    vec2f normalize(const vec2f &vec);
 }

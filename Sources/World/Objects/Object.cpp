@@ -4,7 +4,7 @@
 
 #include "Useful/Geometry/Shape/Shape.hpp"
 
-Shape *Object::GetShape() const {
+uf::Shape *Object::GetShape() const {
     return shape.get();
 }
 

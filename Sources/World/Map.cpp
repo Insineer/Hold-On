@@ -5,7 +5,7 @@
 #include "Game.hpp"
 #include "Player.hpp"
 #include "World/Objects/Hero.hpp"
-#include "World/Objects/Mob.hpp"
+#include "World/Objects/Enemy.hpp"
 
 Map::Map() {
     size = uf::vec2f(1000, 1000);
@@ -14,14 +14,14 @@ Map::Map() {
     Game::Get()->GetPlayer()->SetHero(hero);
     objects.push_back(uf::uptr<Object>(hero));
 
-    Mob *mob = new Mob;
-    mob->SetPosition(0, 0);
-    objects.push_back(uf::uptr<Object>(mob));
+    Enemy *enemy = new Enemy;
+    enemy->SetPosition(0, 0);
+    objects.push_back(uf::uptr<Object>(enemy));
 }
 
-void Map::Update() {
+void Map::Update(sf::Time timeElapsed) {
     for (auto &obj : objects)
-        obj->Update();
+        obj->Update(timeElapsed);
 }
 
 void Map::Draw(sf::RenderTarget *target) {
@@ -58,3 +58,5 @@ void Map::Draw(sf::RenderTarget *target) {
 Hero *Map::GetHero() const {
     return hero;
 }
+
+Map::~Map() {}

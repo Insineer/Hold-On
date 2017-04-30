@@ -1,5 +1,7 @@
 #pragma once
 
+#include <SFML/System/Clock.hpp>
+
 #include "Useful/Memory.hpp"
 
 class Player;
@@ -14,6 +16,8 @@ private:
     uf::uptr<Window> window;
     uf::uptr<Map> map;
     uf::uptr<State> state;
+
+    sf::Clock clock;
 
 public:
     Game();

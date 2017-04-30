@@ -4,12 +4,15 @@
 #include <SFML/Graphics/PrimitiveType.hpp>
 
 #include "Useful/Geometry/Vec2f.hpp"
-#include "World/Objects/Object.hpp"
+#include "Useful/Memory.hpp"
 
 namespace sf {
     class RenderTarget;
     class RectangleShape;
+    class Time;
 }
+
+class Object;
 class Hero;
 class Mob;
 
@@ -22,8 +25,10 @@ private:
 public:
     Map();
 
-    void Update();
+    void Update(sf::Time);
     void Draw(sf::RenderTarget *target);
 
     Hero *GetHero() const;
+
+    ~Map();
 };

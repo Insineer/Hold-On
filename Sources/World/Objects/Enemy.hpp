@@ -2,13 +2,9 @@
 
 #include "Mob.hpp"
 
-namespace uf {
-    class Circle;
-}
-
-class Hero : public Mob {
+class Enemy : public Mob {
 public:
-    Hero();
+    Enemy();
     virtual void Update(sf::Time) final;
 };
 

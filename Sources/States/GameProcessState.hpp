@@ -6,7 +6,7 @@ class GameProcessState : public State {
 public:
     GameProcessState();
     void HandleEvent(sf::Event) final;
-    void Update() final;
+    void Update(sf::Time) final;
     void Draw() final;
 };
 

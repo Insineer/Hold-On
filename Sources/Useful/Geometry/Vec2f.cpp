@@ -15,6 +15,10 @@ float vec2f::length() const {
     return ::length(*this);
 }
 
+vec2f vec2f::normalize() const {
+    return ::normalize(*this);
+}
+
 vec2f vec2f::operator+(const vec2f &other) {
     return vec2f(x + other.x, y + other.y);
 }
@@ -61,4 +65,9 @@ std::ostream& operator<<(std::ostream& os, const vec2f& vec)
     return os;
 }
 
-float uf::length(const vec2f &vec) { return std::sqrt(vec.x * vec.x + vec.y * vec.y); }
+float uf::length(const vec2f &vec) {
+    return std::sqrt(vec.x * vec.x + vec.y * vec.y);
+}
+vec2f uf::normalize(const vec2f &vec) {
+    return vec / length(vec);
+}
