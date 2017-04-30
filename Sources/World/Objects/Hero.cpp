@@ -18,6 +18,9 @@ Hero::Hero() {
 };
 
 void Hero::Update(sf::Time timeElapsed) {
-    moveDirection = uf::vec2f(0, 1);
     Mob::Update(timeElapsed);
+}
+
+void Hero::SetMoveOrder(uf::vec2f order) {
+    moveDirection = order;
 }

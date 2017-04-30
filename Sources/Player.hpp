@@ -10,6 +10,8 @@ private:
     Hero *hero;
 
 public:
+    void Update();
+
     void SetHero(Hero *hero);
     ~Player();
 };

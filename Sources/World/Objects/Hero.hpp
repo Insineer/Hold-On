@@ -10,6 +10,6 @@ class Hero : public Mob {
 public:
     Hero();
     virtual void Update(sf::Time) final;
+
+    void SetMoveOrder(uf::vec2f order);
 };
-
-

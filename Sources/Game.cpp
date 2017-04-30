@@ -7,9 +7,10 @@
 #include "World/Map.hpp"
 #include "States/GameProcessState.hpp"
 
-#include <iostream>
-
 Game::Game() {
+    sf::Time minTickTime = sf::seconds(1.f / 60);
+    sf::Time timeElapsed;
+
     if (instance) {
         std::cout << "Error: Attempt to create second Game instance!" << std::endl;
         exit(1);
@@ -21,7 +22,12 @@ Game::Game() {
     state.reset(new GameProcessState());
 
     while(window->IsOpen()) {
-        sf::Time timeElapsed = clock.restart();
+        timeElapsed = clock.restart();
+        if (timeElapsed < minTickTime) {
+            sf::sleep(minTickTime - timeElapsed);
+            timeElapsed = minTickTime;
+        }
+
         sf::Event event;
         while (window->PollEvent(event)) {
             if (event.type == sf::Event::Closed)
