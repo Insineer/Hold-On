@@ -4,6 +4,7 @@
 #include <SFML/System/String.hpp>
 
 #include "Useful/Memory.hpp"
+#include "Useful/Geometry/Vec2f.hpp"
 
 namespace sf {
     class RenderWindow;
@@ -25,6 +26,9 @@ public:
 
     bool IsOpen() const;
     sf::Texture *GetTexture(const sf::String &key) const;
+    uf::vec2f GetSize() const;
+    // Mouse position relative to down-left window corner
+    uf::vec2f GetMousePosition() const;
 
     ~Window();
 };

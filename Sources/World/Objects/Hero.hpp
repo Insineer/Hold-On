@@ -12,4 +12,5 @@ public:
     virtual void Update(sf::Time) final;
 
     void SetMoveOrder(uf::vec2f order);
+    void SetViewDirection(float angle);
 };

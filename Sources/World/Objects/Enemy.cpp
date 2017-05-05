@@ -22,9 +22,9 @@ Enemy::Enemy() {
 void Enemy::Update(sf::Time timeElapsed) {
     Hero *hero = Game::Get()->GetMap()->GetHero();
     if (shape->Intersect(hero->GetShape())) {
-        std::cout << "GOTCHA" << std::endl;
+        //std::cout << "GOTCHA" << std::endl;
     } else {
-        moveDirection = (hero->GetPosition() - shape->GetPosition()).normalize();
+        setMoveDirection((hero->GetPosition() - shape->GetPosition()).normalize());
     }
     Mob::Update(timeElapsed);
 }

@@ -7,14 +7,15 @@
 #include "Useful/Geometry/Shape/Circle.hpp"
 
 Hero::Hero() {
-    shape.reset(new uf::Circle(27));
+    shape.reset(new uf::Circle(30));
     shapeCircle = dynamic_cast<uf::Circle *>(shape.get());
 
     speed = 50;
 
     sprite.reset(new sf::Sprite);
-    sprite->setTexture(*Game::Get()->GetWindow()->GetTexture("armysheet"));
-    sprite->setTextureRect(sf::IntRect(385, 25, 80, 54));
+    sprite->setTexture(*Game::Get()->GetWindow()->GetTexture("Hero"));
+    sprite->setTextureRect(sf::IntRect(0, 0, 100, 100));
+    sprite->setOrigin(uf::vec2f(sprite->getTextureRect().width / 2, sprite->getTextureRect().height / 2));
 };
 
 void Hero::Update(sf::Time timeElapsed) {
@@ -22,5 +23,9 @@ void Hero::Update(sf::Time timeElapsed) {
 }
 
 void Hero::SetMoveOrder(uf::vec2f order) {
-    moveDirection = order;
+    setMoveDirection(order);
+}
+
+void Hero::SetViewDirection(float angle) {
+    shape->SetRotation(angle);
 }

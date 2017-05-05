@@ -6,7 +6,7 @@ namespace uf {
 
     class Shape {
     protected:
-        float angle; //Has to be between -180 and 180
+        float angle;
         uf::vec2f position;
     public:
         Shape();
@@ -22,7 +22,7 @@ namespace uf {
             position.y = y;
         }
 
-        void SetRotation(const float ang) { angle = ang; }
+        void SetRotation(const float angle) { this->angle = angle; }
 
         virtual bool Intersect(Shape *shape) = 0;
 

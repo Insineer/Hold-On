@@ -7,11 +7,13 @@ namespace uf {
 }
 
 class Mob : public Object {
+private:
+    uf::vec2f moveDirection;
 protected:
     float speed;
     uf::Circle *shapeCircle;
 
-    uf::vec2f moveDirection;
+    void setMoveDirection(uf::vec2f moveDirection);
 
 public:
     Mob();

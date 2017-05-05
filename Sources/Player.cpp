@@ -2,6 +2,8 @@
 
 #include <SFML/Window.hpp>
 
+#include "Game.hpp"
+#include "Graphics/Window.hpp"
 #include "World/Objects/Hero.hpp"
 
 void Player::Update() {
@@ -16,6 +18,12 @@ void Player::Update() {
         moveVector.x = -1;
     moveVector.normalize();
     hero->SetMoveOrder(moveVector);
+
+    uf::vec2f viewVector = Game::Get()->GetWindow()->GetMousePosition();
+    //std::cout << viewVector << std::endl;
+    viewVector -= Game::Get()->GetWindow()->GetSize() / 2;
+    std::cout << uf::vec2f(sf::Mouse::getPosition()) << std::endl;
+    hero->SetViewDirection(viewVector.GetAngle());
 }
 
 void Player::SetHero(Hero *hero) {
