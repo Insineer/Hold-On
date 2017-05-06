@@ -74,10 +74,11 @@ vec2f::operator sf::Vector2i() const {
     return sf::Vector2i((int)x, (int)y);
 }
 
-std::ostream& uf::operator<<(std::ostream& os, const uf::vec2f& vec)
-{
-    os << "(" << vec.x << ", " << vec.y << ')';
-    return os;
+namespace uf {
+    std::ostream &operator<<(std::ostream &os, const uf::vec2f &vec) {
+        os << "(" << vec.x << ", " << vec.y << ')';
+        return os;
+    }
 }
 
 float uf::length(const vec2f &vec) {
