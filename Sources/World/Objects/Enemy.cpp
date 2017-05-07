@@ -17,6 +17,7 @@ Enemy::Enemy() {
     sprite.reset(new sf::Sprite);
     sprite->setTexture(*Game::Get()->GetWindow()->GetTexture("monstr1"));
     sprite->setTextureRect(sf::IntRect(10, 10, 40, 40));
+    sprite->setOrigin(uf::vec2f(sprite->getTextureRect().width / 2, sprite->getTextureRect().height / 2));
 }
 
 void Enemy::Update(sf::Time timeElapsed) {

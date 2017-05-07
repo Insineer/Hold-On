@@ -59,10 +59,10 @@ namespace uf {
     bool Intersect(const vec2f &point1, const vec2f &point2, const Circle &Circle) {
         vec2f c = Circle.GetPosition();
         float diffX = point2.x - point1.x,
-                diffY = point2.y - point1.y;
+              diffY = point2.y - point1.y;
         float x = (diffX * diffY * (c.y - point1.y) + point1.x * diffY * diffY + c.x * diffX * diffX)
                   / (diffY * diffY + diffX * diffX),
-                y = diffY * (x - point1.x) / diffX + point1.y;
+              y = diffY * (x - point1.x) / diffX + point1.y;
         vec2f diff = vec2f(x, y) - c;
         if (Circle.GetRadius() < length(diff))
             return false;
@@ -70,14 +70,14 @@ namespace uf {
     }
 
     bool Intersect(const Circle &Circle1, const Circle &Circle2) {
-        auto diff = vec2f(Circle1.GetPosition()) - vec2f(Circle2.GetPosition());
+        auto diff = Circle1.GetPosition() - Circle2.GetPosition();
         if (Circle1.GetRadius() + Circle2.GetRadius() < length(diff))
             return false;
         return true;
     }
 
     bool Intersect(const Rectangle &Rect1, const Rectangle &Rect2) {
-        auto diff = vec2f(Rect1.GetPosition()) - vec2f(Rect2.GetPosition());
+        auto diff = Rect1.GetPosition() - Rect2.GetPosition();
 
         if (HalfDiag(Rect1) + HalfDiag(Rect2) < length(diff))
             return false;
