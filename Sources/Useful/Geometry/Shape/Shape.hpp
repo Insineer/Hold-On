@@ -22,7 +22,8 @@ namespace uf {
             position.y = y;
         }
 
-        void SetRotation(const float angle) { this->angle = angle; }
+        void Rotate(const float angle);
+        void SetRotation(const float angle);
 
         virtual bool Intersect(Shape *shape) = 0;
 

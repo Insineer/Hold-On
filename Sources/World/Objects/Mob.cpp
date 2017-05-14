@@ -8,8 +8,6 @@
 #include "World/Map.hpp"
 #include "Useful/Geometry/Shape/Circle.hpp"
 
-#include <iostream>
-
 Mob::Mob() {
 
 }
@@ -20,7 +18,7 @@ void Mob::Draw(sf::RenderTarget *target, uf::vec2f targetCoord) const {
     sprite->setPosition(targetCoord);
     sprite->setRotation(-float(shape->GetRotation() * 180 / M_PI));
 
-    std::cout << shape->GetRotation() * 180 / M_PI << std::endl;
+    //std::cout << shape->GetRotation() * 180 / M_PI << std::endl;
 
     target->draw(*sprite);
 }

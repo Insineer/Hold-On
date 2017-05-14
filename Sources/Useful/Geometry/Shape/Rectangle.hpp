@@ -10,6 +10,7 @@ namespace uf {
         uf::vec2f size;
     public:
         Rectangle(const uf::vec2f &size) : size(size) {}
+        Rectangle(const float x, const float y) : size(x, y) {}
 
         bool Intersect(Shape *shape);
 

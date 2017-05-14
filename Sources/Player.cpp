@@ -22,7 +22,7 @@ void Player::Update() {
     uf::vec2f viewVector = Game::Get()->GetWindow()->GetMousePosition();
     //std::cout << viewVector << std::endl;
     viewVector -= Game::Get()->GetWindow()->GetSize() / 2;
-    std::cout << uf::vec2f(sf::Mouse::getPosition()) << std::endl;
+    //std::cout << uf::vec2f(sf::Mouse::getPosition()) << std::endl;
     hero->SetViewDirection(viewVector.GetAngle());
 }
 

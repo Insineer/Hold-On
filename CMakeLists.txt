@@ -41,7 +41,7 @@ set(SOURCE_FILES
         Sources/Useful/Geometry/Shape/Rectangle.cpp
         Sources/Useful/Geometry/Shape/Rectangle.hpp
         Sources/Useful/Geometry/Geometry.hpp
-        Sources/Useful/Math.cpp Sources/Useful/Math.hpp Sources/Useful/Geometry/Shape/Shape.cpp Sources/World/Objects/Enemy.cpp Sources/World/Objects/Enemy.hpp)
+        Sources/Useful/Math.cpp Sources/Useful/Math.hpp Sources/Useful/Geometry/Shape/Shape.cpp Sources/World/Objects/Enemy.cpp Sources/World/Objects/Enemy.hpp Sources/World/Objects/Turret.cpp Sources/World/Objects/Turret.hpp)
 
 set(EXECUTABLE_NAME "Hold_On")
 add_executable(${EXECUTABLE_NAME} ${SOURCE_FILES})

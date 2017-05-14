@@ -13,14 +13,20 @@ namespace sf {
 }
 
 class Object;
-class Hero;
 class Mob;
+class Hero;
+class Enemy;
+class Turret;
 
 class Map {
 private:
     uf::vec2f size;
     std::list<uf::uptr<Object>> objects;
     Hero *hero;
+    Enemy *enemy;
+    Turret *turret;
+
+    bool placingTurret;
 
 public:
     Map();
@@ -29,6 +35,7 @@ public:
     void Draw(sf::RenderTarget *target);
 
     Hero *GetHero() const;
+    Enemy *GetEnemy() const;
 
     ~Map();
 };
