@@ -29,10 +29,6 @@ float vec2f::GetAngle() const {
     float angle = 0;
     if (x > 0) angle = std::atan(y / x);
     if (x < 0) angle = float(M_PI - std::atan(y / -x));
-//    while (angle > M_PI)
-//        angle -= 2 * M_PI;
-//    while (angle < -M_PI)
-//        angle += 2 * M_PI;
     return angle;
 }
 

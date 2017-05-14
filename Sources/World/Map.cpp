@@ -67,8 +67,13 @@ void Map::Draw(sf::RenderTarget *target) {
     }
 
     if (turret && placingTurret)
-        turret->SetPosition(sf::Mouse::getPosition().x + hero->GetPosition().x - target->getSize().x,
-                            sf::Mouse::getPosition().y + hero->GetPosition().y - target->getSize().y);
+        turret->SetPosition(Game::Get()->GetWindow()->GetMousePosition().x
+                            + hero->GetPosition().x
+                            - target->getSize().x / 2,
+                            Game::Get()->GetWindow()->GetSize().y
+                            - Game::Get()->GetWindow()->GetMousePosition().y
+                            + hero->GetPosition().y
+                            - target->getSize().y / 2);
 
     for (auto &obj : objects)
         if (obj->GetPosition().x >= hero->GetPosition().x - target->getSize().x &&

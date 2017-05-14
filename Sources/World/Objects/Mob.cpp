@@ -13,8 +13,6 @@ Mob::Mob() {
 }
 
 void Mob::Draw(sf::RenderTarget *target, uf::vec2f targetCoord) const {
-    //sprite->setPosition(targetCoord - uf::vec2f(sprite->getTextureRect().width, sprite->getTextureRect().height) / 2);
-
     sprite->setPosition(targetCoord);
     sprite->setRotation(-float(shape->GetRotation() * 180 / M_PI));
 
